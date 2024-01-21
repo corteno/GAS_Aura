@@ -11,7 +11,13 @@ void UAuraAbilitySystemComponent::AbilityActorInfoSet()
 void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* AbilitySystemComponent, const FGameplayEffectSpec& EffectSpec,
                                                 FActiveGameplayEffectHandle ActiveEffectHandle)
 {
-	GEngine->AddOnScreenDebugMessage(-1, 20.0f, FColor::Yellow,
-	                                 FString::Printf(TEXT("DebugMessage"))
-	);
+	FGameplayTagContainer TagContainer;
+	EffectSpec.GetAllAssetTags(TagContainer);
+
+	EffectAssetTags.Broadcast(TagContainer);
+	
+	for (const FGameplayTag& Tag : TagContainer) {
+		// TODO: Broadcast the tag to the widget controller
+	}
+	
 }
