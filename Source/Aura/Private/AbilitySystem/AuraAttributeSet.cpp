@@ -12,10 +12,7 @@
 UAuraAttributeSet::UAuraAttributeSet()
 {
 	InitHealth(50.0f);
-	InitMaxHealth(100.0f);
-
 	InitMana(50.0f);
-	InitMaxMana(100.0f);
 }
 
 void UAuraAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -143,9 +140,9 @@ void UAuraAttributeSet::OnRep_CriticalHitChance(const FGameplayAttributeData& Ol
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitChance, OldCriticalHitChance);
 }
 
-void UAuraAttributeSet::OnRep_CriticalHitDamage(const FGameplayAttributeData& CriticalHitDamage) const
+void UAuraAttributeSet::OnRep_CriticalHitDamage(const FGameplayAttributeData& OldCriticalHitDamage) const
 {
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitDamage, CriticalHitDamage);
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitDamage, OldCriticalHitDamage);
 }
 
 void UAuraAttributeSet::OnRep_CriticalHitResistance(const FGameplayAttributeData& OldCriticalHitResistance) const
